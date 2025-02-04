@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promak Digital Printers</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo">Promak Digital Printers</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="about us.html">About us</a></li>
+        </ul>
+        <button class="cta" id="openQuoteForm">Get Quote</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Quality Printing Services</h1>
+            <p>Your one-stop shop for all your digital printing needs.</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+        <div class="hero-image">
+            <img src="Imagesss/promak logo.jpg" alt="Printing Services">
+        </div>
+    </section>
+    <!-- Modals -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Posters & Banners</h3>
+            <p>High-quality posters and banners customized to your needs.</p>
+            <ul>
+                <li>Small: $10</li>
+                <li>Medium: $30</li>
+                <li>Large: $50</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Business Cards</h3>
+            <p>Professional business cards designed to leave a lasting impression.</p>
+            <ul>
+                <li>Basic: $5</li>
+                <li>Premium: $10</li>
+                <li>Luxury: $20</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Custom T-Shirts</h3>
+            <p>Print your unique designs on high-quality fabrics.</p>
+            <ul>
+                <li>Single Print: $15</li>
+                <li>Bulk (10+): $120</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <!-- Get Quote Form (Hidden by Default) -->
+    <div id="quoteFormContainer" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeQuoteForm">&times;</span>
+            <h2>Inquire</h2>
+            <form action="process_inquiry.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+
+                <label for="message">Your Inquiry:</label>
+                <textarea name="message" required></textarea>
+
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card" data-modal="modal1">
+                <h3>Posters & Banners</h3>
+                <p>High-quality, vibrant prints for any occasion.</p>
+            </div>
+            <div class="card" data-modal="modal2">
+                <h3>Business Cards</h3>
+                <p>Professional and personalized business cards.</p>
+            </div>
+            <div class="card" data-modal="modal3">
+                <h3>Custom T-Shirts</h3>
+                <p>Print your designs on premium quality fabrics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="gallery">
+            <img src="portfolio1.jpg" alt="Portfolio Item 1">
+            <img src="portfolio2.jpg" alt="Portfolio Item 2">
+            <img src="portfolio3.jpg" alt="Portfolio Item 3">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Promak Digital Printers. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modals = document.querySelectorAll(".modal");
+            const cards = document.querySelectorAll(".card");
+            const closeButtons = document.querySelectorAll(".close");
+            const quoteModal = document.getElementById("quoteFormContainer");
+            const quoteButton = document.getElementById("openQuoteForm");
+            const closeQuoteForm = document.getElementById("closeQuoteForm");
+             
+            cards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    const modalId = card.getAttribute("data-modal");
+                    document.getElementById(modalId).style.display = "flex";
+                });
+            });
+
+            closeButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    button.parentElement.parentElement.style.display = "none";
+                });
+            });
+            // Open the Quote Form
+            quoteButton.addEventListener("click", () => {
+                quoteModal.style.display = "flex";
+            });
+
+            // Close the Quote Form
+            closeQuoteForm.addEventListener("click", () => {
+                quoteModal.style.display = "none";
+            });
+
+            // Close Modals on Outside Click
+            window.addEventListener("click", (event) => {
+                modals.forEach((modal) => {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+
+
